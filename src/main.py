@@ -39,15 +39,13 @@ async def on_ready():
 
 @bot.event
 async def on_message(message: discord.Message):
-    if message.author.bot:
+    if message.author == bot.user:
         return
     if message.channel.id not in channel_ids:
         return
     idx = channel_ids.index(message.channel.id)
-    print(idx)
     if idx < 0:
         return
-    print(f"Received message from {message.author.name} in {message.channel.name}")
     misskey = misskeys[idx]
     file_ids = []
     if message.attachments:
