@@ -53,7 +53,7 @@ async def on_message(message: discord.Message):
             f = misskey.drive_files_create(
                 file=io.BytesIO(await attachment.read()),
                 name=attachment.filename,
-                visibility="followers",
+                visibility="home",
             )
             file_ids.append(f["id"])
 
