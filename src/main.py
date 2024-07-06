@@ -1,7 +1,7 @@
 import io
 import os
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import discord
 import dotenv
@@ -27,7 +27,7 @@ print(misskeys)
 
 def convert_to_jst(timestamp: str) -> str:
     jst_offset = timedelta(hours=9)
-    utc_time = datetime.utcfromtimestamp(int(timestamp))
+    utc_time = datetime.fromtimestamp(int(timestamp), timezone.utc)
     jst_time = utc_time + jst_offset
     return jst_time.strftime("%Y/%m/%d %H:%M JST")
 
